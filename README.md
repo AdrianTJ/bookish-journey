@@ -59,9 +59,9 @@ Then we spec to define if is a good or bad cocktail.
 
 2. **How would you evaluate whether your application satisfies its objectives?**
 
-I hope more than half of our drinks and cocktails are viable because (Janelle Shane)[ https://www.aiweirdness.com/dont-let-a-neural-net-mix-drinks-18-12-14/]  said “Don`t  let a neural net mix drinks” 
+I hope more than half of our drinks and cocktails are viable because [Janelle Shane](https://www.aiweirdness.com/dont-let-a-neural-net-mix-drinks-18-12-14/)  said “Don`t  let a neural net mix drinks” 
 
-Our objective is to generate new, drinkable an exciting new cocktail. But we are not sure all recipes are viable. 
+Our objective is to generate new, drinkable an exciting new cocktail. But we are not sure all recipes are viable. We hope half our drinks are good.
 
 
 
