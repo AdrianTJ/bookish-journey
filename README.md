@@ -60,7 +60,7 @@ We hope more than half of our drinks and cocktails are viable because [Janelle S
 
 Our objective is to generate new, drinkable an exciting new cocktail. But we are not sure all recipes are viable. We hope half our drinks are good.
 
-![drink1](./image/fundrink1.png) ![drink2](./image/fundrink2.png) ![drink3](./image/fundrink3.png)
+![drink1](./image/fundrink1.png){:height="36px" width="36px"} ![drink2](./image/fundrink2.png) ![drink3](./image/fundrink3.png)
 
 
 
