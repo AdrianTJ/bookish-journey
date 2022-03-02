@@ -53,9 +53,6 @@ Taste: 0/10
 Ease of drinking: 0/10
 Fun had: 0/10
 Then we spec to define if is a good or bad cocktail.
-![drink1](./image/fundrink1.png){width=20%}
-
-
 
 2. **How would you evaluate whether your application satisfies its objectives?**
 
@@ -63,7 +60,7 @@ We hope more than half of our drinks and cocktails are viable because [Janelle S
 
 Our objective is to generate new, drinkable an exciting new cocktail. But we are not sure all recipes are viable. We hope half our drinks are good.
 
-
+![drink1](./image/fundrink1.png){width=20%} ![drink1](./image/fundrink2.png){width=20%}
 
 
 
