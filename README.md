@@ -53,7 +53,7 @@ Taste: 0/10
 Ease of drinking: 0/10
 Fun had: 0/10
 Then we spec to define if is a good or bad cocktail.
-
+![drink1](./image/fundrink1.png){width=20%}
 
 
 
