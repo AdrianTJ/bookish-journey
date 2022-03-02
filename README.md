@@ -1,7 +1,6 @@
-<p align="center">
+
 
   <img src="./Imagen1.jpeg">
-</p>
 
 
 # Data Product Architecture Team 1: Bookish Journey
@@ -17,7 +16,7 @@ Why we are an awesome team: Our professional profiles make a great match because
 
 
 
-# COCKTAIL RECIPES MADE BY MACHINE LEARNING
+ # COCKTAIL RECIPES MADE BY MACHINE LEARNING :cocktail: 	:tropical_drink: :wine_glass:
 
 Are you tired of always drinking the same drinks and cocktails? Would you like to drink something new but do not have time to ask your family or friends? A recommender system could give you some ideas!
 
