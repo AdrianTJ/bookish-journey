@@ -10,7 +10,7 @@
 | Adrian Tame                    | atamejac@itam.mx        | 142235 | AdrianTJ       |
 | Joel Jaramillo Pacheco         | joel.jaramillo@itam.mx  | 30615  | joelitam2021   |
 | Mónica Altagracia García López | mgarc372@itam.mx        | 203145 | mogarcia62     |
-| Juan Carlos Soto Hernández     | sotohernandez@gmail.com | 82616  | JSOHE          |
+| Juan Carlos Soto Hernández     | jsotoher@itam.com       | 82616  | JSOHE          |
 
 Why we are an awesome team: Our professional profiles make a great match because they are very varied, and we are very open to collaborating between ourselves and with others to reach the objectives of the course. 
 
@@ -27,6 +27,44 @@ Are you tired of always drinking the same drinks and cocktails? Would you like t
 
 For the porpuse, the data pulled from **TheCocktailDB** (https://www.thecocktaildb.com/), an open crowd-sourced database of drinks and cocktails from around the world.
 The dataset contains 635 international drinks and cocktails recipes, 488 ingredients, and 635 drink images.
+
+
+
+# 5. Modeling
+
+** 1. What types of models/architectures will you be using for this application? Which ones would you start with?**
+
+We want to start trying a basket analysis looking for combinations of ingredients that are mixed together. For this we will use association rules that are widely used to analyze retail basket or transaction data. Our objective will be to “predict the probability of ingredients that are being mixed together”  (Susan Li)[ https://towardsdatascience.com/a-gentle-introduction-on-market-basket-analysis-association-rules-fa4b986a40ce]
+
+But then, we want to try with TextGenRNN,  wich is a text generation python lib that uses a Recurrent Neural Network (RNN). We will train this model on recipes, products or flavours.
+
+RNN is one solution to the problem of working with sequential data, in this case we will try to give a set of ingredients and expect to get a nice drink.
+
+Will try to implement this idea from [Mikael Davidsson] (https://towardsdatascience.com/using-machine-learning-to-generate-recipes-that-actually-works-b2331c85ab72#d595) who tried to use machine learning to generate recipes that actually work, but we will try to apply it to cocktails. 
+
+Also one of the goals will be to generate high serendipity. Serendipity is a metric that is commonly used in recommender systems, where a high score means that the user was pleasantly surprised. We already have humans making cocktails, what we would like from an AI is a shockingly different but still tasty drink, free from human preconceived notions of what tastes good together.
+
+
+# 6. Evaluation
+
+1. **How would you evaluate your model performance, both during training and inference?**
+Well in name of science our team will taste the drinks as long as it's not a weird drink. And rank 3 different categories.
+Taste: 0/10
+Ease of drinking: 0/10
+Fun had: 0/10
+Then we spec to define if is a good or bad cocktail.
+
+
+
+
+2. **How would you evaluate whether your application satisfies its objectives?**
+
+I hope more than half of our drinks and cocktails are viable because (Janelle Shane)[ https://www.aiweirdness.com/dont-let-a-neural-net-mix-drinks-18-12-14/]  said “Don`t  let a neural net mix drinks” 
+
+Our objective is to generate new, drinkable an exciting new cocktail. But we are not sure all recipes are viable. 
+
+
+
 
 
 # 8. Compute
