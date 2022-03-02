@@ -4,13 +4,24 @@
 |:------------------------------:|:-----------------------:|:------:|:--------------:|
 | Adrian Tame                    | atamejac@itam.mx        | 142235 | AdrianTJ       |
 | Joel Jaramillo Pacheco         | joel.jaramillo@itam.mx  | 30615  | joelitam2021   |
-| Monica Altagracia García López | mgarc372@itam.mx        | 203145 | mogarcia62     |
+| Mónica Altagracia García López | mgarc372@itam.mx        | 203145 | mogarcia62     |
 | Juan Carlos Soto Hernández     | sotohernandez@gmail.com | 82616  | JSOHE          |
 
 Why we are an awesome team: Our professional profiles make a great match because they are very varied, and we are very open to collaborating between ourselves and with others to reach the objectives of the course. 
 
 
 
+# COCKTAIL RECIPES MADE BY MACHINE LEARNING
+
+Are you tired of always drinking the same drinks and cocktails? Would you like to drink something new but do not have time to ask your family or friends? A recommender system could give you some ideas!
+
+**The goal of this repository is to build a simple recommendation system based on drink and cocktail recipes from around the world**. We will see how we can collect data, implement a machine learning model that analyzes recipes to make the drinks or even use it to create our own new recipes, and we will design a basic interface so that anyone can consult it and even bars or restaurants that wish to expand their bar of drinks and cocktails.
+
+
+## Dataset
+
+For the porpuse, the data pulled from **TheCocktailDB** (https://www.thecocktaildb.com/), an open crowd-sourced database of drinks and cocktails from around the world.
+The dataset contains 635 international drinks and cocktails recipes, 488 ingredients, and 635 drink images.
 
 
 # 8. Compute
