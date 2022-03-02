@@ -1,3 +1,9 @@
+<p align="center">
+
+  <img src="./Imagen1.jpeg">
+</p>
+
+
 # Data Product Architecture Team 1: Bookish Journey
 
 | Name                           | Email                   | CU     | Github Handler |
