@@ -22,8 +22,11 @@ Are you tired of always drinking the same drinks and cocktails? Would you like t
 
 **The goal of this repository is to build a simple recommendation system based on drink and cocktail recipes from around the world**. We will see how we can collect data, implement a machine learning model that analyzes recipes to make the drinks or even use it to create our own new recipes, and we will design a basic interface so that anyone can consult it and even bars or restaurants that wish to expand their bar of drinks and cocktails.
 
+# 3. Data Product Architecture Diagram
 
-## Dataset
+<img src="./image/modelo_cocktel.png">
+
+# 4. Dataset
 
 For the porpuse, the data pulled from **TheCocktailDB** (https://www.thecocktaildb.com/), an open crowd-sourced database of drinks and cocktails from around the world.
 The dataset contains 635 international drinks and cocktails recipes, 488 ingredients, and 635 drink images.
