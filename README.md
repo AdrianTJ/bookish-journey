@@ -62,6 +62,19 @@ Our objective is to generate new, drinkable an exciting new cocktail. But we are
 
 ![drink1](./image/fundrink1.png) ![drink2](./image/fundrink2.png) 
 
+# 7. Inference
+
+1. **Will you be doing online prediction or batch prediction or a combination of both?**
+
+    Our solution will be to make online prediction, the user will provide some ingredients and the system will make a new cocktail.
+
+2. **Will the inference be run on the device or through a server?**
+
+    The inference will run through a server hosted on Google Cloud.
+
+3. **Can you run inference on CPU or edge device or do you need GPU?**
+
+    We assume that the model that we are going to develop to make the inference will not require a high level of processing, so it will be executed on  CPU.
 
 
 # 8. Compute
