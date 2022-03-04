@@ -16,7 +16,9 @@ Why we are an awesome team: Our professional profiles make a great match because
 
 
 
- # COCKTAIL RECIPES MADE BY MACHINE LEARNING :cocktail: 	:tropical_drink: :wine_glass:
+ # COCKTAIL RECIPES MADE BY MACHINE LEARNING :cocktail: :tropical_drink: :wine_glass:
+ 
+ # 1-2. Objetive and Users
 
 Are you tired of always drinking the same drinks and cocktails? Would you like to drink something new but do not have time to ask your family or friends? A recommender system could give you some ideas!
 
