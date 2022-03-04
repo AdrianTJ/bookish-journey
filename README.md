@@ -39,13 +39,13 @@ The dataset contains 635 international drinks and cocktails recipes, 488 ingredi
 
 1. **What types of models/architectures will you be using for this application? Which ones would you start with?**
 
-We want to start trying a basket analysis looking for combinations of ingredients that are mixed together. For this we will use association rules that are widely used to analyze retail basket or transaction data. Our objective will be to “predict the probability of ingredients that are being mixed together”  (Susan Li)[ https://towardsdatascience.com/a-gentle-introduction-on-market-basket-analysis-association-rules-fa4b986a40ce]
+We want to start trying a basket analysis looking for combinations of ingredients that are mixed together. For this we will use association rules that are widely used to analyze retail basket or transaction data. Our objective will be to “predict the probability of ingredients that are being mixed together” [Susan Li](https://towardsdatascience.com/a-gentle-introduction-on-market-basket-analysis-association-rules-fa4b986a40ce)
 
 But then, we want to try with `TextGenRNN`,  wich is a text generation python lib that uses a Recurrent Neural Network (RNN). We will train this model on recipes, products or flavours.
 
 RNN is one solution to the problem of working with sequential data, in this case we will try to give a set of ingredients and expect to get a nice drink.
 
-Will try to implement this idea from [Mikael Davidsson] (https://towardsdatascience.com/using-machine-learning-to-generate-recipes-that-actually-works-b2331c85ab72#d595) who tried to use machine learning to generate recipes that actually work, but we will try to apply it to cocktails. 
+Will try to implement this idea from [Mikael Davidsson](https://towardsdatascience.com/using-machine-learning-to-generate-recipes-that-actually-works-b2331c85ab72#d595) who tried to use machine learning to generate recipes that actually work, but we will try to apply it to cocktails. 
 
 Also one of the goals will be to generate high serendipity. Serendipity is a metric that is commonly used in recommender systems, where a high score means that the user was pleasantly surprised. We already have humans making cocktails, what we would like from an AI is a shockingly different but still tasty drink, free from human preconceived notions of what tastes good together.
 
