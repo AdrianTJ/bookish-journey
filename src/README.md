@@ -3,7 +3,7 @@
 
 This directory hosts the files used to create our data store. To do this, we implement an *ELT* process:
 
-   **E**xtract - the input data for the machine learning model was extracted from **TheCocktailDB API** [https://www.thecocktaildb.com/api.php] using a virtual machine *(cocktail notebook)* on the VERTEX AI platform. The script can be found in the **Cocktails_Load.ipynb** file.
+   **E**xtract - the input data for the machine learning model was extracted from **TheCocktailDB API** [https://www.thecocktaildb.com/api.php] using a virtual machine *(cocktail notebook)* on the **VERTEX AI platform**. The script can be found in the **Cocktails_Load.ipynb** file.
   
    **L**oad - The extracted information was uploaded to **Google Cloud Storage** with the following structure: 1 folder for each cocktail and a file in json format associated with that drink.
   
