@@ -59,3 +59,17 @@ One hot encoding is a process of converting categorical data variables so they c
     
  ## 6. Trade-offs
 
+
+## References
+
+- https://plotly.com/python/pca-visualization/
+
+- https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python
+
+- https://medium.com/web-mining-is688-spring-2021/how-dishes-are-clustered-together-based-on-the-ingredients-3b357ac02b26
+
+- https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+
+- https://www.askpython.com/python/examples/plot-k-means-clusters-python
+
+- https://numpy.org/doc/stable/reference/generated/numpy.argpartition.html
