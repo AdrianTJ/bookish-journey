@@ -43,6 +43,7 @@ We had to change the format of the data frames from this:
 
 	 
 To this:
+
 |idDrink                          | Vodka                 | Lime  | Bourbon |...|
 |:------------------------------:|:-----------------------:|:------:|:--------------:|:--------------:|
 | 11001                    | 1      | 0         | 0       |...|
@@ -56,15 +57,64 @@ We had to do this because, many machine learning algorithms cannot operate on la
 
 One hot encoding is a process of converting categorical data variables so they can be provided to machine learning algorithms to improve predictions.
 
-We first, Map unique recipe names with Ingredient. We use [medium](https://medium.com/web-mining-is688-spring-2021/how-dishes-are-clustered-together-based-on-the-ingredients-3b357ac02b26) to to guide our code.
+
+**One-hot encoded vector of Ingredients**
+
+To find similarities between cocktails and their ingredients, we will represent a recipe by a one-hot encoded vector of its ingredients. We will be establishing a vocabulary of ingredients using a method ‘DictVectorizer’ provided in the sklearn library.We use [How Dishes are Clustered together based on the Ingredients?](https://medium.com/web-mining-is688-spring-2021/how-dishes-are-clustered-together-based-on-the-ingredients-3b357ac02b26) to guide our code.
+
+> DictVectorizer transforms lists of feature-value mappings to vectors. This transformer turns lists of mappings (dict-like objects) of feature names to feature values into Numpy arrays for use with scikit-learn estimators.
+When feature values are strings, this transformer will do a binary one-hot (aka one-of-K) coding: one boolean-valued feature is constructed for each of the possible string values that the feature can take on.
 
 
 
+'''
+#function to convert list of ingredients into a dictionary
+def convert_to_dict(lst):
+    d = {} #empty dict
+    for ingre in lst:
+        d[ingre] = 1
+    return d
+'''
 
+'''
+#We use the function to convert every row into a dictionary. 
+#'vodka': 1, 'lime juice': 1... this will help us later to create a one hot encoding.
 
+base['bagofwords'] = base.ingredients.str.split(',').apply(convert_to_dict)
+print(base.bagofwords)
+'''
 
-## 3. Algorithm
+'''
+#DictVectorizer:This transformer turns lists of mappings (dict-like objects) of feature names to feature values into Numpy arrays or scipy.sparse matrices for use with scikit-learn estimators.
+#sparse, default=True. Whether transform should produce scipy.sparse matrices. In this case we set it as False.
 
+vector_dict = DictVectorizer(sparse = False)
+
+#fit_transform() is used on the training data so that we can scale the training data and also learn the scaling parameters of that data. 
+#The fit method is calculating the mean and variance of each of the features present in our data. 
+#The transform method is transforming all the features using the respective mean and variance.
+#We past every dictionary into a list.
+
+X = vector_dict.fit_transform(base["bagofwords"].tolist())
+
+#We select the column strDrink(name of the drink) from de dataset
+y = base.strDrink
+'''
+## 3. Algorithm 
+
+## KPCA Method
+
+Kernel Principal Component Analysis (KPCA) is a non-linear dimensionality reduction technique. It is an extension of Principal Component Analysis (PCA)   *which is a linear dimensionality reduction technique* using kernel methods.
+
+PCA is a technique for reducing the number of dimensions in a dataset whilst retaining most information. It is using the correlation between some dimensions and tries to provide a minimum number of variables that keeps the maximum amount of variation or information about how the original data is distributed
+
+<img src="../image/PlottingClusters.png">
+
+### K-means
+
+The K-eeans algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
+
+<img src="../image/KmeanPlot.png">
     
 ## 4. Experiments
     
