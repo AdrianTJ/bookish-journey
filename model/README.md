@@ -115,7 +115,7 @@ Kernel Principal Component Analysis (KPCA) is a non-linear dimensionality reduct
 
 PCA is a technique for reducing the number of dimensions in a dataset whilst retaining most information. It is using the correlation between some dimensions and tries to provide a minimum number of variables that keeps the maximum amount of variation or information about how the original data is distributed
 
-<img src="../image/PlottingClusters.png">
+<img src="../image/ClusterPlot.png">
 
 We are starting with somethig that is not a ML model at all, [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). This is in our opinion the easiest to implement, and can give us a good idea of some basic recommendations. 
 
@@ -127,7 +127,7 @@ We want to build a more robust ML system that will be based on clustering. We wa
 
 The K-means algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
 
-<img src="../image/KmeanPlt.png">
+<img src="../image/KmeansPlt.png">
 
 
    
@@ -136,6 +136,14 @@ The K-means algorithm clusters data by trying to separate samples in n groups of
 ## 4. Experiments
     
 ## 5. ML metrics
+
+
+We have decided that we are doing model evaluation for each of our two ML models, and then after combining these with the cosine distance and generating our final meta-model, we are also doing some more subjective evaluation based not on metrics but on human input.
+
+For the ML model evaluation, we really have two different models. For clustering, we are sticking to silhouette curves and the elbow method. We note that both of these metrics are heuristic, which makes sense because we are working with an unsupervised learning problem. While there are other metrics to evaluate the efficiency and predictive power of the clusters we define, we are sticking with these two because we have worked with them in the past and we have a good understanding of how to interpret them.
+
+As for market basket analysis, there is the trifecta of metrics that seems to be the go-to evaluation method: support, confidence and lift, with lift being the primary metric we are interested in.
+
     
 ## 6. Trade-offs
 
