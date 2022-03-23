@@ -17,6 +17,21 @@ The dataset contains:
     
 ## 2. Feature engineering
 
+Data Preparation: This preprocessing step involves the manipulation and consolidation of raw data from different sources into a standardized format so that it can be used in a model:
+
+For this process we had to:
+
+- [x] Drop empty columns, there is no cocktail with more than 12 ingredients.
+
+- [x] Selecting Specific Columns in Google BigQuery 
+
+- [x] Change all ingredients to lowercase letters.
+
+- [x] Standarize the name of ingredients
+
+- [x] Pass ingredientes into one hot encoding format. 
+
+
 We had to change the format of the data frames from this:
 
 |idDrink                          | strIngredient1                 | strIngredient2  | strIngredient3|...|
@@ -35,24 +50,16 @@ To this:
 | 11003                    | 0      | 0         | 1       |...|
 | 11004                    | 0      | 0	        | 0       |...|
 
-To achive this we had to do the follow
 
-- [x] Drop empty columns, there is no cocktail with more than 12 ingredients.
 
-- [x] Change all ingredients to lowercase letters.
-
-- [x] Select unique ingredients.
-
-- [x] Make one hot encoding using ingredientes as columns.
-
-### **What is the Problem with Categorical Data?**
-
-Many machine learning algorithms cannot operate on label data directly. They require all input variables and output variables to be numeric.
+We had to do this because, many machine learning algorithms cannot operate on label data directly. They require all input variables and output variables to be numeric.
 
 One hot encoding is a process of converting categorical data variables so they can be provided to machine learning algorithms to improve predictions.
 
 
+
 ## 3. Algorithm
+
     
 ## 4. Experiments
     
