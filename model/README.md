@@ -60,32 +60,39 @@ One hot encoding is a process of converting categorical data variables so they c
 
 **One-hot encoded vector of Ingredients**
 
+
 To find similarities between cocktails and their ingredients, we will represent a recipe by a one-hot encoded vector of its ingredients. We will be establishing a vocabulary of ingredients using a method ‘DictVectorizer’ provided in the sklearn library.We use [How Dishes are Clustered together based on the Ingredients?](https://medium.com/web-mining-is688-spring-2021/how-dishes-are-clustered-together-based-on-the-ingredients-3b357ac02b26) to guide our code.
+
 
 > DictVectorizer transforms lists of feature-value mappings to vectors. This transformer turns lists of mappings (dict-like objects) of feature names to feature values into Numpy arrays for use with scikit-learn estimators.
 When feature values are strings, this transformer will do a binary one-hot (aka one-of-K) coding: one boolean-valued feature is constructed for each of the possible string values that the feature can take on.
 
 
-
-'''
+```
 #function to convert list of ingredients into a dictionary
 def convert_to_dict(lst):
     d = {} #empty dict
     for ingre in lst:
         d[ingre] = 1
     return d
-'''
+```
 
-'''
+
+
+
+
+
+```
 #We use the function to convert every row into a dictionary. 
 #'vodka': 1, 'lime juice': 1... this will help us later to create a one hot encoding.
 
 base['bagofwords'] = base.ingredients.str.split(',').apply(convert_to_dict)
 print(base.bagofwords)
-'''
+```
 
-'''
-#DictVectorizer:This transformer turns lists of mappings (dict-like objects) of feature names to feature values into Numpy arrays or scipy.sparse matrices for use with scikit-learn estimators.
+
+```
+#DictVectorizer:  turns lists of mappings (dict-like objects) of feature names to feature values.C
 #sparse, default=True. Whether transform should produce scipy.sparse matrices. In this case we set it as False.
 
 vector_dict = DictVectorizer(sparse = False)
@@ -99,7 +106,7 @@ X = vector_dict.fit_transform(base["bagofwords"].tolist())
 
 #We select the column strDrink(name of the drink) from de dataset
 y = base.strDrink
-'''
+```
 ## 3. Algorithm 
 
 ## KPCA Method
@@ -120,7 +127,7 @@ We want to build a more robust ML system that will be based on clustering. We wa
 
 The K-means algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
 
-<img src="../image/KmeanPlot.png">
+<img src="../image/KmeanPlt.png">
 
 
    
