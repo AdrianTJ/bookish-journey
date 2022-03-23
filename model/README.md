@@ -56,6 +56,11 @@ We had to do this because, many machine learning algorithms cannot operate on la
 
 One hot encoding is a process of converting categorical data variables so they can be provided to machine learning algorithms to improve predictions.
 
+We first, Map unique recipe names with Ingredient. We use [medium](https://medium.com/web-mining-is688-spring-2021/how-dishes-are-clustered-together-based-on-the-ingredients-3b357ac02b26) to to guide our code.
+
+
+
+
 
 
 ## 3. Algorithm
