@@ -1,4 +1,4 @@
-# Team 1. Bookish Journey: Cocktail Recipes Made By Machibe Learning
+# Team 1. Bookish Journey: Cocktail Recommendation System
 
 :cocktail: :tropical_drink: :wine_glass: :tumbler_glass: :bubble_tea: :cup_with_straw:
 
@@ -110,17 +110,27 @@ PCA is a technique for reducing the number of dimensions in a dataset whilst ret
 
 <img src="../image/PlottingClusters.png">
 
+We are starting with somethig that is not a ML model at all, [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). This is in our opinion the easiest to implement, and can give us a good idea of some basic recommendations. 
+
+<img src="../image/CosineSimilarity.png">
+
 ### K-means
 
-The K-eeans algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
+We want to build a more robust ML system that will be based on clustering. We want to start with [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering), and grow to other clustering algorithms from there. This is where the meat of the machine learning computation will take place. Something interesting to note is that we have discrete classes and k-means clustering works **only on real vectors**, so we have to solve the problem of generating real vectors from a list of categorical variables. This will be done by using [principal component analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis) as an in-between step from having the raw ingredients to generating an n-dimensional proximation to a point from that list. 
+
+The K-means algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
 
 <img src="../image/KmeanPlot.png">
+
+
+   
+
     
 ## 4. Experiments
     
- ## 5. ML metrics
+## 5. ML metrics
     
- ## 6. Trade-offs
+## 6. Trade-offs
 
 
 ## References
