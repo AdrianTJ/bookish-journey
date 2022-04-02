@@ -1,0 +1,11 @@
+name: airflow-gcp
+channels:
+ - defaults
+dependencies:
+ - python=3.8
+ - pip
+ - pip:
+   - apache-airflow==2.0.1
+   - pyyaml
+   - google-cloud-storage
+   - google-cloud-bigquery
