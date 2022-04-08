@@ -1,6 +1,24 @@
-# Team 1. Bookish Journey: Cocktail Recommendation System
+# :cocktail: :tropical_drink: :wine_glass: The Models :tumbler_glass: :bubble_tea: :cup_with_straw:
 
-:cocktail: :tropical_drink: :wine_glass: :tumbler_glass: :bubble_tea: :cup_with_straw:
+# File Directory
+
+We include a brief rundown of the included files, along with how to use them, and how they all connect between each other. 
+
+* **GCP_model_setup.sh:** Shell script that does a couple setup things so that modeling works. Initially, it calls another shell script, `GCP_variables.sh`, which includes all the relevant variables that we need to work with GCP. For obvious reasons, we do not upload this file. Then, it configures the project, setting it up with the correct project ID, and enables the APIs that we use to train and deploy the clustering models. Finally, the script creates a bucket where everything that we do in relation to clustering is stored. We note that since this bucket already exists, so most of the times this just returns an error, unless we delete it first. 
+
+* **KMeans_Training.ipynb:** One of the two main notebooks in this folder. This notebook first calls the shell file `GCP_model_setup.sh`, and a YAML file called `GCP_model_details.yaml` , which we also do not incluse because it contains sensitive project information. We then do the modeling and Feature Engineering for K-Means in particular, and train the model. We test it by doing a recommendation in the same file, and then use the `joblib` package to save the model to the bucket we created in the `GCP_model_setup.sh` shell script, in a folder called `KMeans`. Finally, we send the model to Vertex AI using the script `GCP_Deploying_Kmeans.sh`. 
+
+* **MeanShift_Model_Training.ipynb:** The same as `KMeans_Taining.ipynb`, but for the Mean Shift Clustering algorithm. We note that we use just 2 dimensions in PCA for this algorithm, as to make a more varied set of clusters. 
+
+* **GCP_Deploying_KMeans.sh:** We use this script to do basically everything related to Vertex AI for model deployment. First, we upload the model to Vertex AI models. We then create an endpoint for KMeans, and using that endpoint, deploy the model to it. This allows us to access and predict using the model at the endpoint. We generally have it turned off, because this consumes machine resources and as such we are expected to pay for it. 
+
+* **GCP_Deploying_MeanShift.sh:** The same as `GCP_Deploying_KMeans.sh`, but, this is used to deploy the Mean Shift clustering algorithm. 
+
+* **Experiments.ipynb:** Jupyty notebook that includes some experiments with the deployed models. To run this notebook, the models have to bbe deployed to Vertex AI, and they need to be ready and receiving connections on an endpoint. Because only the clustering models are deployed to Vertex AI, then we do PCA on this file too, and then test some cocktails by sending a prediction request. We generate some recommendations from the same cluster for each of the two clustering algorithms we developed, and report those as the recommendations. 
+
+## File Relation
+
+![](../image/setup.png)
 
 ## 1. Data
 
@@ -12,9 +30,8 @@ The dataset contains:
 
 - *296* unique ingredients, and
 
--  *635* drink images.
+- *635* drink images.
 
-    
 ## 2. Feature engineering
 
 Data Preparation: This preprocessing step involves the manipulation and consolidation of raw data from different sources into a standardized format so that it can be used in a model:
@@ -31,42 +48,34 @@ For this process we had to:
 
 - [x] Pass ingredientes into one hot encoding format. 
 
-
 We had to change the format of the data frames from this:
 
-|idDrink                          | strIngredient1                 | strIngredient2  | strIngredient3|...|
-|:------------------------------:|:-----------------------:|:------:|:--------------:|:--------------:|
-| 11001                    | Vodka       | Light rum         | Gin       |...|
-| 11002                    | Light rum   | Lime	             | Sugar     |...|
-| 11003                    | Bourbon     | Angostura bitters | Sugar     |...|
-| 11004                    | Negroni     | Gin	             | Campari   |...|
+| idDrink | strIngredient1 | strIngredient2    | strIngredient3 | ... |
+|:-------:|:--------------:|:-----------------:|:--------------:|:---:|
+| 11001   | Vodka          | Light rum         | Gin            | ... |
+| 11002   | Light rum      | Lime              | Sugar          | ... |
+| 11003   | Bourbon        | Angostura bitters | Sugar          | ... |
+| 11004   | Negroni        | Gin               | Campari        | ... |
 
-	 
 To this:
 
-|idDrink                          | Vodka                 | Lime  | Bourbon |...|
-|:------------------------------:|:-----------------------:|:------:|:--------------:|:--------------:|
-| 11001                    | 1      | 0         | 0       |...|
-| 11002                    | 0      | 1         | 0       |...|
-| 11003                    | 0      | 0         | 1       |...|
-| 11004                    | 0      | 0	        | 0       |...|
-
-
+| idDrink | Vodka | Lime | Bourbon | ... |
+|:-------:|:-----:|:----:|:-------:|:---:|
+| 11001   | 1     | 0    | 0       | ... |
+| 11002   | 0     | 1    | 0       | ... |
+| 11003   | 0     | 0    | 1       | ... |
+| 11004   | 0     | 0    | 0       | ... |
 
 We had to do this because, many machine learning algorithms cannot operate on label data directly. They require all input variables and output variables to be numeric.
 
 One hot encoding is a process of converting categorical data variables so they can be provided to machine learning algorithms to improve predictions.
 
-
 **One-hot encoded vector of Ingredients**
-
 
 To find similarities between cocktails and their ingredients, we will represent a recipe by a one-hot encoded vector of its ingredients. We will be establishing a vocabulary of ingredients using a method ‘DictVectorizer’ provided in the sklearn library.We use [How Dishes are Clustered together based on the Ingredients?](https://medium.com/web-mining-is688-spring-2021/how-dishes-are-clustered-together-based-on-the-ingredients-3b357ac02b26) to guide our code.
 
-
 > DictVectorizer transforms lists of feature-value mappings to vectors. This transformer turns lists of mappings (dict-like objects) of feature names to feature values into Numpy arrays for use with scikit-learn estimators.
-When feature values are strings, this transformer will do a binary one-hot (aka one-of-K) coding: one boolean-valued feature is constructed for each of the possible string values that the feature can take on.
-
+> When feature values are strings, this transformer will do a binary one-hot (aka one-of-K) coding: one boolean-valued feature is constructed for each of the possible string values that the feature can take on.
 
 ```
 #function to convert list of ingredients into a dictionary
@@ -77,11 +86,6 @@ def convert_to_dict(lst):
     return d
 ```
 
-
-
-
-
-
 ```
 #We use the function to convert every row into a dictionary. 
 #'vodka': 1, 'lime juice': 1... this will help us later to create a one hot encoding.
@@ -89,7 +93,6 @@ def convert_to_dict(lst):
 base['bagofwords'] = base.ingredients.str.split(',').apply(convert_to_dict)
 print(base.bagofwords)
 ```
-
 
 ```
 #DictVectorizer:  turns lists of mappings (dict-like objects) of feature names to feature values.C
@@ -107,7 +110,8 @@ X = vector_dict.fit_transform(base["bagofwords"].tolist())
 #We select the column strDrink(name of the drink) from de dataset
 y = base.strDrink
 ```
-## 3. Algorithm 
+
+## 3. Algorithm
 
 ## KPCA Method
 
@@ -129,14 +133,9 @@ The K-means algorithm clusters data by trying to separate samples in n groups of
 
 <img src="../image/KmeansPlt.png">
 
-
-   
-
-    
 ## 4. Experiments
-    
-## 5. ML metrics
 
+## 5. ML metrics
 
 We have decided that we are doing model evaluation for each of our two ML models, and then after combining these with the cosine distance and generating our final meta-model, we are also doing some more subjective evaluation based not on metrics but on human input.
 
@@ -144,9 +143,7 @@ For the ML model evaluation, we really have two different models. For clustering
 
 As for market basket analysis, there is the trifecta of metrics that seems to be the go-to evaluation method: support, confidence and lift, with lift being the primary metric we are interested in.
 
-    
 ## 6. Trade-offs
-
 
 ## References
 
