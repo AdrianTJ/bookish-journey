@@ -131,9 +131,41 @@ We want to build a more robust ML system that will be based on clustering. We wa
 
 The K-means algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
 
+
 <img src="../image/KmeansPlt.png">
 
+### Mean Shift Clustering
+
+Unlike the popular K-Means cluster algorithm, mean-shift does not require specifying the number of clusters in advance. The number of clusters is determined by the algorithm with respect to the data.
+
+Simply speaking, “mean shift” is equal to “shifting to the mean” in an iterative way. In the algorithm, every data point is shifting to the “regional mean” step by step and the location of the final destination of each point represents the cluster it belongs to. [Mean Shift](Understanding Mean Shift Clustering and Implementation with Python).
+
+<img src="../image/TestMeanShift.png">
+
 ## 4. Experiments
+
+### 4.1 Testing Mean Shift Clustering
+
+We design 3 experiments with the **Mean Shift Clustering** model.
+
+<img src="../image/Exp1MeanShift.png">
+
+<img src="../image/Exp2MeanShift.png">
+
+<img src="../image/Exp3MeanShift.png">
+
+### 4.2 Testing K-Means Clustering
+
+Also 3 experiments with the **KMean Shift Clustering** model.
+
+<img src="../image/Exp1Kmeans.png">
+
+<img src="../image/Exp2Kmeans.png">
+
+<img src="../image/Exp3Kmeans.png">
+
+
+* **KMeans_Training.ipynb:** One of the two main notebooks in this folder. This notebook first calls the shell file `GCP_model_setup.sh`, and a YAML file called `GCP_model_details.yaml` , which we also do not incluse because it contains sensitive project information. We then do the modeling and Feature Engineering for K-Means in particular, and train the model. We test it by doing a recommendation in the same file, and then use the `joblib` package to save the model to the bucket we created in the `GCP_model_setup.sh` shell script, in a folder called `KMeans`. Finally, we send the model to Vertex AI using the script `GCP_Deploying_Kmeans.sh`. 
 
 ## 5. ML metrics
 
@@ -144,6 +176,9 @@ For the ML model evaluation, we really have two different models. For clustering
 As for market basket analysis, there is the trifecta of metrics that seems to be the go-to evaluation method: support, confidence and lift, with lift being the primary metric we are interested in.
 
 ## 6. Trade-offs
+
+* One of the trade of we made is select just the ingredients, dropping the cocktail preparation and pictures, so we are limited by this.
+*   
 
 ## References
 
