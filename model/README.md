@@ -26,11 +26,11 @@ We get the data from **TheCocktailDB** (https://www.thecocktaildb.com/), an open
 
 The dataset contains:
 
-- *635* international drinks and cocktails recipes, 
+- *425* international drinks and cocktails recipes, 
 
 - *296* unique ingredients, and
 
-- *635* drink images.
+- *425* drink images.
 
 ## 2. Feature engineering
 
@@ -146,13 +146,13 @@ Simply speaking, “mean shift” is equal to “shifting to the mean” in an i
 
 ### 4.1 Testing Mean Shift Clustering
 
-We design 3 experiments with the **Mean Shift Clustering** model. But i will show the results of the  first experiment.
+We design 3 experiments with the **Mean Shift Clustering** model. But we will show the results of the  first experiment.
 
 
 <img src="../image/Exp1MeanShift.png">
 
 
-You can see that the first experiment that the cocktails selected are:
+You can see that the first experiment, there are 5 cocktails:
 
  * Cuba Libre: Light rum, Lime, Coca-Cola	
  * Dirty Nipple: Kahlua, Sambuca, Baileys irish cream
@@ -166,7 +166,7 @@ So we also test the K-Means Clustering
 
 ### 4.2 Testing K-Means Clustering
 
-Here we will show the experiment 2 and with the **KMean Shift Clustering** model.
+Here we will show the experiment 2, with the **KMean Shift Clustering** model.
 
 
 <img src="../image/Exp2Kmeans.png">
@@ -203,6 +203,7 @@ As for market basket analysis, there is the trifecta of metrics that seems to be
 ## 6. Trade-offs
 
 * One trade-offs we made is select just the ingredients, dropping the cocktail preparation and pictures, so we are limited by this.
+* 
 * Other trade-offs is selecting two models, KMean Shift Clustering and Mean Shift Clustering, leaving on a side other recommendation systems. 
 
 ## References
