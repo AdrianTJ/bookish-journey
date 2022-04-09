@@ -138,7 +138,7 @@ The K-means algorithm clusters data by trying to separate samples in n groups of
 
 Unlike the popular K-Means cluster algorithm, mean-shift does not require specifying the number of clusters in advance. The number of clusters is determined by the algorithm with respect to the data.
 
-Simply speaking, “mean shift” is equal to “shifting to the mean” in an iterative way. In the algorithm, every data point is shifting to the “regional mean” step by step and the location of the final destination of each point represents the cluster it belongs to. [Mean Shift](Understanding Mean Shift Clustering and Implementation with Python).
+Simply speaking, “mean shift” is equal to “shifting to the mean” in an iterative way. In the algorithm, every data point is shifting to the “regional mean” step by step and the location of the final destination of each point represents the cluster it belongs to. [Mean Shift](https://towardsdatascience.com/understanding-mean-shift-clustering-and-implementation-with-python-6d5809a2ac40)
 
 <img src="../image/TestMeanShift.png">
 
