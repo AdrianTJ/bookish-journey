@@ -146,26 +146,51 @@ Simply speaking, “mean shift” is equal to “shifting to the mean” in an i
 
 ### 4.1 Testing Mean Shift Clustering
 
-We design 3 experiments with the **Mean Shift Clustering** model.
+We design 3 experiments with the **Mean Shift Clustering** model. But i will show the results of the  first experiment.
+
 
 <img src="../image/Exp1MeanShift.png">
 
-<img src="../image/Exp2MeanShift.png">
 
-<img src="../image/Exp3MeanShift.png">
+You can see that the first experiment that the cocktails selected are:
+
+ * Cuba Libre: Light rum, Lime, Coca-Cola	
+ * Dirty Nipple: Kahlua, Sambuca, Baileys irish cream
+ * Sangria: Red wine, Sugar, Orange juice, Lemon juice, Cloves, Cinnamon
+ * Paloma: Grape Soda, Tequila
+ * Adam: Dark rum, Lemon juice, Grenadine
+
+They are sugar based or soda based.
+
+So we also test the K-Means Clustering
 
 ### 4.2 Testing K-Means Clustering
 
-Also 3 experiments with the **KMean Shift Clustering** model.
+Here we will show the experiment 2 and with the **KMean Shift Clustering** model.
 
-<img src="../image/Exp1Kmeans.png">
 
 <img src="../image/Exp2Kmeans.png">
 
+
+* Frozen Pineapple Daiquiri: Light rum	Pineapple	Lime juice	Sugar
+* Mango Mojito: Lime, Mango	Mint, White Rum, Ice, Soda, Water,	Mango	
+* Elderflower Caipirinha: Cachaca, Lime, Elderflower cordial
+* Kiwi Lemon: Kiwi liqueur, Bitter lemon, Ice
+* Pina Colada: Light rum, Coconut milk, Pineapple
+
+You can see that they are citric based.
+
+Finaly we show the third experiment.
+
 <img src="../image/Exp3Kmeans.png">
 
+* Royal Bitch: Frangelico, Crown Royal
+* Blackthorn: Sweet Vermouth, Sloe gin, Lemon peel
+* Nutty Irishman: Baileys irish cream, Frangelico, Milk
+* Big Red: Irish cream, Goldschlager
+* Sol y sombra: Brandy,	Anisette
 
-* **KMeans_Training.ipynb:** One of the two main notebooks in this folder. This notebook first calls the shell file `GCP_model_setup.sh`, and a YAML file called `GCP_model_details.yaml` , which we also do not incluse because it contains sensitive project information. We then do the modeling and Feature Engineering for K-Means in particular, and train the model. We test it by doing a recommendation in the same file, and then use the `joblib` package to save the model to the bucket we created in the `GCP_model_setup.sh` shell script, in a folder called `KMeans`. Finally, we send the model to Vertex AI using the script `GCP_Deploying_Kmeans.sh`. 
+They are milk based.
 
 ## 5. ML metrics
 
@@ -177,8 +202,8 @@ As for market basket analysis, there is the trifecta of metrics that seems to be
 
 ## 6. Trade-offs
 
-* One of the trade of we made is select just the ingredients, dropping the cocktail preparation and pictures, so we are limited by this.
-*   
+* One trade-offs we made is select just the ingredients, dropping the cocktail preparation and pictures, so we are limited by this.
+* Other trade-offs is selecting two models, KMean Shift Clustering and Mean Shift Clustering, leaving on a side other recommendation systems. 
 
 ## References
 
