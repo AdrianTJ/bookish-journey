@@ -196,9 +196,26 @@ They are milk based.
 
 We have decided that we are doing model evaluation for each of our two ML models, and then after combining these with the cosine distance and generating our final meta-model, we are also doing some more subjective evaluation based not on metrics but on human input.
 
-For the ML model evaluation, we really have two different models. For clustering, we are sticking to silhouette curves and the elbow method. We note that both of these metrics are heuristic, which makes sense because we are working with an unsupervised learning problem. While there are other metrics to evaluate the efficiency and predictive power of the clusters we define, we are sticking with these two because we have worked with them in the past and we have a good understanding of how to interpret them.
+For the ML model evaluation, we really have two different models. For clustering, we are sticking to silhouette curves and the elbow method also the. We note that both of these metrics are heuristic, which makes sense because we are working with an unsupervised learning problem. While there are other metrics to evaluate the efficiency and predictive power of the clusters we define, we are sticking with these two because we have worked with them in the past and we have a good understanding of how to interpret them.
 
-As for market basket analysis, there is the trifecta of metrics that seems to be the go-to evaluation method: support, confidence and lift, with lift being the primary metric we are interested in.
+The Elbow method helps to select the optimal number of clusters by fitting the model with a range of values for  𝐾. If the line chart resembles an arm, then the elbow (the point of inflection on the curve) is a good indication that the underlying model fits best at that point.
+
+In the visualizer elbow is annotated with a dashed line, according to this method the best number of clusters is 5.
+
+<img src="../image/Elbow.png">
+
+The **Silhouette Coefficient** is used when the ground-truth about the dataset is unknown and computes the density of clusters computed by the model. The score is computed by averaging the silhouette coefficient for each sample, computed as the difference between the average intra-cluster distance and the mean nearest-cluster distance for each sample, normalized by the maximum value. This produces a score between 1 and -1, where 1 is highly dense clusters and -1 is completely incorrect clustering.
+
+The Silhouette Visualizer displays the silhouette coefficient for each sample on a per-cluster basis, visualizing which clusters are dense and which are not. This is particularly useful for determining cluster imbalance, or for selecting a value for 𝐾 by comparing multiple visualizers. 
+In this case, the average Silhouette is around 0.05.
+
+<img src="../image/silhouette.png">
+
+
+**Intercluster distance maps** display an embedding of the cluster centers in 2 dimensions with the distance to other centers preserved. E.g. the closer to centers are in the visualization, the closer they are in the original feature space. The clusters are sized according to a scoring metric. By default, they are sized by membership, e.g. the number of instances that belong to each center. This gives a sense of the relative importance of clusters.
+
+
+<img src="../image/Intercluster.png">
 
 ## 6. Trade-offs
 
