@@ -203,7 +203,7 @@ As for market basket analysis, there is the trifecta of metrics that seems to be
 ## 6. Trade-offs
 
 * One trade-offs we made is select just the ingredients, dropping the cocktail preparation and pictures, so we are limited by this.
-* 
+
 * Other trade-offs is selecting two models, KMean Shift Clustering and Mean Shift Clustering, leaving on a side other recommendation systems. 
 
 ## References
