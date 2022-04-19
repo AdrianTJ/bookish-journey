@@ -17,6 +17,18 @@ gcloud ai endpoints create \
   --display-name=$meanshift_endpoint_name
 printf "Done\n\n"
 
+echo Setting IDs
+gcloud ai models list --region=us-central1 --filter=meanshift > temp.txt
+meanshift_model_id=$(awk -F ' ' 'FNR == 2 {print $1}' temp.txt)
+sed -i '/meanshift_model/d' GCP_model_details.yaml
+echo -e '\n'meanshift_model_id: $(awk -F ' ' 'FNR == 2 {print $1}' temp.txt) >> GCP_model_details.yaml
+
+gcloud ai endpoints list --region=us-central1 --filter=meanshift > temp.txt
+meanshift_endpoint_id=$(awk -F ' ' 'FNR == 2 {print $1}' temp.txt)
+sed -i '/meanshift_endpoint/d' GCP_model_details.yaml
+echo -e '\n'meanshift_endpoint_id: $(awk -F ' ' 'FNR == 2 {print $1}' temp.txt) >> GCP_model_details.yaml
+printf "Done\n\n"
+
 echo Deploying Model
 gcloud ai endpoints deploy-model $meanshift_endpoint_id \
   --region=$region \

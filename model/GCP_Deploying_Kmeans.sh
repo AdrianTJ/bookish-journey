@@ -17,6 +17,18 @@ gcloud ai endpoints create \
   --display-name=$kmeans_endpoint_name
 printf "Done\n\n"
 
+echo Setting IDs
+gcloud ai models list --region=us-central1 --filter=kmeans > temp.txt
+kmeans_model_id=$(awk -F ' ' 'FNR == 2 {print $1}' temp.txt)
+sed -i '/kmeans_model/d' GCP_model_details.yaml
+echo -e '\n'kmeans_model_id: $(awk -F ' ' 'FNR == 2 {print $1}' temp.txt) >> GCP_model_details.yaml
+
+gcloud ai endpoints list --region=us-central1 --filter=kmeans > temp.txt
+kmeans_endpoint_id=$(awk -F ' ' 'FNR == 2 {print $1}' temp.txt)
+sed -i '/kmeans_endpoint/d' GCP_model_details.yaml
+echo -e '\n'kmeans_endpoint_id: $(awk -F ' ' 'FNR == 2 {print $1}' temp.txt) >> GCP_model_details.yaml
+printf "Done\n\n"
+
 echo Deploying Model
 gcloud ai endpoints deploy-model $kmeans_endpoint_id \
   --region=us-central1 \
