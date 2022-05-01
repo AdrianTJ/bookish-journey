@@ -1,3 +1,8 @@
+/*
+Creates a temporary table. Is visible only within the current session
+Then select the variables
+Export in qualified URI for the external data location
+*/
 BEGIN
     CREATE TEMP TABLE _SESSION.tmpExportTable AS (
         SELECT
