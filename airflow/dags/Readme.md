@@ -45,7 +45,3 @@ The files created by the Dags can be found in specified bucket in yaml file call
 The tables created in bigquery by *sql_elt_ddl* can be found in bigquery space (*indredients_dag* and *cocktails_dag*).
 
 The final predictions are stored in the respective folders of each model, for example, the KMeans result is stored in the bucket containing the clustering algorithms. 
-
-## Note
-
-This README is under construction, a lot of files for the Airflow are missing, in particular everything related to the ML training. This will be uploaded at a later date.
