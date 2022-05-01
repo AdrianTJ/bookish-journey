@@ -1,10 +1,14 @@
+/* create a new external table 
+ uris gives an array of fully qualified URIs for the external data locations
+With format json*/
+
 CREATE EXTERNAL TABLE IF NOT EXISTS #########
 OPTIONS (
     uris = ['########'],
     format = 'NEWLINE_DELIMITED_JSON'
 );
 
-
+-- A view is a virtual table based on the result-set of an SQL statement, selecting the variables to use
 CREATE OR REPLACE VIEW #########
 AS SELECT
     idDrink,
