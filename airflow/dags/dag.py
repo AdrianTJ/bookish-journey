@@ -59,12 +59,7 @@ extract_load_task = PythonOperator(
     op_kwargs={'bucket': params['bucket'], 'key': params['cocktails_key'], 'path_auth':params['path_auth']}
 )
 
-transform_task = BashOperator(
-    dag=dag,
-    params=params,
-    task_id = 'transform_task',
-    bash_command='echo "This seccions is for transfor the data" '
-)
+# The transformation task is implicit in the extract_load_task.
 
 load_task = BigQueryOperator(
     dag=dag,
@@ -75,5 +70,5 @@ load_task = BigQueryOperator(
 )
 
 # SET DEPENDENCY
-# extract_load_task will run before transform_task and load_task will run after transform_task 
-extract_load_task >> transform_task >> load_task
+# extract_load_task will run before load_task 
+extract_load_task >>  load_task
