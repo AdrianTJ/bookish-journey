@@ -1,5 +1,11 @@
 """ML DAG for Drinks"""
 
+##IMPORT PACKAGES
+    #The Dag object is used to instantiate a DAG.
+    #The Operators are used to operate the tasks:
+        #PythonOperator: execute a Python callable. (similar for BashOperator to execute a Bash command)
+        #BigQueryOperator: executes SQL queries.
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
@@ -8,8 +14,6 @@ from airflow.models import Variable
 from datetime import datetime
 import os
 import yaml
-
-
 from kmeans_training import kmeans_training
 
 
@@ -35,6 +39,7 @@ params = {
     'path_auth': config['path_auth']
 }
 
+## DEFINE DAG
 dag = DAG(
     dag_id='drinks_ml_dag',
     default_args=args,
@@ -44,6 +49,8 @@ dag = DAG(
     max_active_runs=1
 )
 
+
+## DEFINE TASKS
 bqcsv_task = BigQueryOperator(
 	     dag=dag,
     	     task_id = 'bqcsv_task',
@@ -92,6 +99,7 @@ meanshift_test_task = BashOperator(
     bash_command='python3 /home/airflow/dags/meanshift_test.py'
 )
 
+# SET DEPENDENCY
 bqcsv_task >> ml_setup_task >> ml_load_csv >> kmeans_training_task >> kmeans_test_task
 
 bqcsv_task >> ml_setup_task >> ml_load_csv >> meanshift_training_task >> meanshift_test_task
