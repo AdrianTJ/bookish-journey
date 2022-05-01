@@ -1,5 +1,11 @@
 """ELT DAG for Drinks"""
 
+##IMPORT PACKAGES
+    #The Dag object is used to instantiate a DAG.
+    #The Operators are used to operate the tasks:
+        #PythonOperator: execute a Python callable. (similar for BashOperator to execute a Bash command)
+        #BigQueryOperator: executes SQL queries.
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
@@ -27,14 +33,13 @@ ddl_path = os.path.join(elt_path, 'ddl.sql')
 ddl = open(ddl_path, mode='r').read()
 
 params = {
-    #'bucket': Variable.get("bucket"),
     'bucket': config['bucket'],
-    # 'project_id': Variable.get("project_id"),
-    #'cocktails_key': Variable.get("cocktails_key")
     'cocktails_key': config['cocktails_key'],
     'path_auth': config['path_auth']
 }
 
+
+## DEFINE DAG
 dag = DAG(
     dag_id='drinks_elt_dag_final',
     default_args=args,
@@ -44,6 +49,8 @@ dag = DAG(
     max_active_runs=1
 )
 
+## DEFINE TASKS
+# Our first task is to extract and load drinks data.
 extract_load_task = PythonOperator(
    dag=dag,
     task_id = 'extract_load_task',
@@ -57,8 +64,6 @@ transform_task = BashOperator(
     params=params,
     task_id = 'transform_task',
     bash_command='echo "This seccions is for transfor the data" '
-#    use_legacy_sql=False,
-#    sql=ddl
 )
 
 load_task = BigQueryOperator(
@@ -69,4 +74,6 @@ load_task = BigQueryOperator(
     sql=ddl
 )
 
+# SET DEPENDENCY
+# extract_load_task will run before transform_task and load_task will run after transform_task 
 extract_load_task >> transform_task >> load_task
