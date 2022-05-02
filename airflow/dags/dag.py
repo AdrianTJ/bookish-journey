@@ -35,7 +35,8 @@ ddl = open(ddl_path, mode='r').read()
 params = {
     'bucket': config['bucket'],
     'cocktails_key': config['cocktails_key'],
-    'path_auth': config['path_auth']
+    'path_auth': config['path_auth'], 
+    'project_id': config['project_id']
 }
 
 

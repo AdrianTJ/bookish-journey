@@ -55,7 +55,8 @@ bqcsv_task = BigQueryOperator(
 	     dag=dag,
     	     task_id = 'bqcsv_task',
     	     use_legacy_sql=False,
-     	     sql=bqcsv
+     	     sql=bqcsv, 
+              paramas=params
  )
 
 ml_setup_task = BashOperator(

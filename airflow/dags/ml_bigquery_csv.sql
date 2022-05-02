@@ -23,10 +23,10 @@ BEGIN
             strIngredient13,
             strIngredient14,
             strIngredient15 
-        FROM `###############`
+        FROM `{{ params.project_id }}.cocktails_dataset.cocktail_dag`
     );
     EXPORT DATA OPTIONS(
-        uri='###############'
+        uri='gs://{{ params.bucket }}/testing/*.csv'
         , format='CSV'
         , overwrite=true
         , header=true
