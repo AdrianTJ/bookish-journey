@@ -53,7 +53,7 @@ The problem with categorical variables such as an ingredients list is that we ca
 
 ## Machine Learning Component
 
-![Kmeans_diagram.png](./imgs/Kmeans_diagram.png)
+![Kmeans_Diagram.png](./imgs/Kmeans_Diagram.png)
 
 The machine learning component starts in feature engineering, and after we hve gathered the ingredient list from the clean data. While we could have gone with another clustering algorithm that accepted categorical data (such as [K-Modes](https://www.analyticsvidhya.com/blog/2021/06/kmodes-clustering-algorithm-for-categorical-data/#:~:text=KModes%20clustering%20is%20one%20of,similar%20our%20data%20points%20are.)), we decided that because we wanted to use different types of clustering algorithms, we would instead transform the data to continous observations with PCA then apply the clustering algorithms. 
 
