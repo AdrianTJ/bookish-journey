@@ -1,6 +1,4 @@
-<img title="" src="./image/logo.png" alt="">
-
-# Data Product Architecture Team 1: Bookish Journey
+# Bookish Journey: Or How We Learned to Stop Worrying and Love Cocktails
 
 | Name                           | Email                  | CU     | Github Handler |
 |:------------------------------:|:----------------------:|:------:|:--------------:|
@@ -11,9 +9,19 @@
 
 Why we are an awesome team: Our professional profiles make a great match because they are very varied, and we are very open to collaborating between ourselves and with others to reach the objectives of the course. 
 
+A little bit about each of us:
+
+* Joel: I am a Computer Engineer with 25 years of experience. I am a fervent believer that education is the key to self-improvement. 
+
+* Juan Carlos: I am a runner and I’m new doing data science. I work in the CDMX, with the transit police database, I’m a R lover, but I´m trying to learn python. I love this team! They have taught me so much.
+
+* I’m a mathematician and I'm training in data science. I have worked in data analysis but now I want to enter the world of data engineering and this team has helped me make the transition more friendly.  I like to learn from experts and also share the knowledge I have gained.
+
+* Adrian: I am a mathematician turned data scientist, and my intererests lie in model optimization and natural language processing. I enjoy coffee, brewing beer, and anything made by David Lynch. I also particularly enjoy reading about ML and its applications to art and design.  
+
 # COCKTAIL RECOMMENDATION SYSTEM :cocktail: :tropical_drink: :wine_glass:
 
-# 1-2. Objetive and Users
+# Objetives and Users
 
 Are you tired of always drinking the same drinks and cocktails? Would you like to drink something new but do not have time to ask your family or friends? Our product could spice things up at your next gathering!
 
@@ -23,27 +31,29 @@ The business problem is a simple one: you might be a bartender and you get asked
 
 While there are many ways to solve this problem, we believe that a Machine Learning solution is a right bet for this type of problem. Recommendation systems are one of [the central areas of research in machine learning](https://reader.elsevier.com/reader/sd/pii/S1110866515000341?token=F77D4BE37B9D418490451E22B2E4AD82F3FB974AD6DDDBAE5477120DC82498DF4351B3EAB515ECE1D3D10636CF31451C&originRegion=us-east-1&originCreation=20220322175629), and as such, there is vast literature and area knowledge we can expand on and use to build some interesting things. [There have even been projects similar to ours](https://d1wqtxts1xzle7.cloudfront.net/34448716/Food_recommendation_system_using_food_clustering_analysis_for_diabetic_patients-with-cover-page-v2.pdf?Expires=1647975512&Signature=eEkUdxA0gxi-6UKprv3DLNap1AFtPzJfORTmxk5p5~3CAOdY9K07xOAfEhtBylovpoxGcfwMZsvCgdJM2kAtAJBGBLf6-Jjq8gaiI90fqsQNT0LJSKc9ssCB84-2SGbnM2zKN8Ea81~MOYpqu5cWMVP9FjgI6lZSatxNek~ru9ZmvQRu9RfaND-vfJkzi89ToRO9~aUyqOqWaV2syryEQigrurF05B7fTjFv5EwJsDUNcK0LtJ0MH-TNcVIs1Sj6C5~WhJhNijTuk6VGtyOCd1nUAwo1vmf5iKLHzi-cB2~qy3EqvKGpy69ma9azQ9anJBEe6a7l0x7mNt-q3JM8TA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA), but with an emphasys on food instead of drinks. 
 
-While the central aim of this project is to create a recommendation system for drinks that already exist, *i.e.* you input a drink and get similar ones, there is also the possibility of us examnding it to get recommendations based of a list of ingredientes, rather than a drink that already exists as input. 
+While the central aim of this project is to create a recommendation system for drinks that already exist, *i.e.* you input a drink and get similar ones, we also developed a small solution for adding a list of ingredients and getting recommendations based on that new drink composed of those ingredients. 
 
-In our opinion, this is a great way to explore drinks. A simple interface with a back end that isn't bbased on ML models could give recommendations that re repetitive, and would need to be updated by hand whenever a new drink is added to the database. We already have a model trained, and all we would need to do is generate predictions or recommendations for new observations. Not only that, but it is practically scalable to a much greater size should more drinks be added to the database. 
+In our opinion, this is a great way to explore drinks. A simple interface with a back end that isn't bbased on ML models could give recommendations that are repetitive, and would need to be updated by hand whenever a new drink is added to the database. We already have a model trained, and all we would need to do is generate predictions or recommendations for new observations. Not only that, but it is practically scalable to a much greater size should more drinks be added to the database. 
 
 Getting into specifics a little more, this problem would be an unsupervised learning problem. After some research, we noted that [the state of the art seem to be hybrid recommendation systems](https://link.springer.com/content/pdf/10.1023/A:1021240730564.pdf). [This is backed up by a lot of literature on the matter](https://arxiv.org/pdf/1901.03888.pdf). As such, our goal would be to incorporate different algorithms to generate a group of recommendations that are varied and have many different models in the backend. 
 
-# 3. Data Product Architecture Diagram
+# Data Product Architecture Diagram
 
-The following diagram provides an overview into the tech stack and general architecture of the entire data product we are creating, from calling the API to get data up to getting the recommendations themselves. This tech stack has many components, but below we list some of the most important ones and the reasons why we chose them. 
+<img src="./image/Architecture_Diagram.png" title="" alt="Architecture_Diagram.png" data-align="center">
 
-<img src="./image/modelo_cocktel.png">
+We use different technologies and parts of the GCP tech stack to build and deploy the recommendation engine:
 
-* **Data Lake:** Our cloud storage solution. Basically, we need somewhere to store our raw and clean data, as well as the model. A more sophisticated solution is not really necessary for the needs of this data product and stack, and as such, we keep it simple by dumping the files we need in a bucket. 
+- **VertexAI**: Initially used for prototyping, it became a core component of the way we generate online predictions. We use the [Workbench](https://cloud.google.com/vertex-ai/docs/workbench/) to have JupyterLab up so we can run some of the scripts, and we also use [VertexAI models and endpoints to deploy the model](https://cloud.google.com/vertex-ai/docs/predictions/deploy-model-api) and then call it using the [predictions](https://cloud.google.com/vertex-ai/docs/predictions/online-predictions-custom-models) interface.
 
-* **Vertex AI:** We are handling model training, tuning, and generation in Vertex AI. This is because we are very familiar with the interface of Jupytr notebooks and are comfortable using them to generate the needed models. 
+- **Cloud Storage**: We keep everything relevant to the project on cloud storage. We took more of a [data lake](https://cloud.google.com/learn/what-is-a-data-lake#:~:text=A%20data%20lake%20is%20a,of%20it%2C%20ignoring%20size%20limits.) approach where we have two buckets where we store structured and sometimes unstructured data.
 
-* **CloudSQL:** Our initial data load is through a Jupytr notebook that extracts the information from the API, but, we manipulate and transform the data in SQL as a followup step to be able to use it in the notebooks that generate the models and give us sume visualization tools. 
+- **BigQuery:** We use this part of the tech stack as our one-stop shop for everything having to do with SQL and data cleaning. We extract the data and save it in a JSON file for each cocktail, so we do some data manipulation to keep the features we want and clean the data up a little. In our [ELT](https://www.integrate.io/blog/what-is-etlt/) pipeline, BigQuery is one of the places where we transform the data, and we further process it and do feature design and extraction in Python.
 
-**Note:** While this diagram is not final, it is the initial idea we came up with, and will be edited or changed depending on the needs and problems we encounter when building the finalized product. 
+- **Airflow**: Our [orchestrator](https://www.element61.be/en/resource/airflow-data-ai-orchestration#:~:text=What%20is%20Airflow%3F,scheduling%2C%20orchestrating%20and%20monitoring%20workflows.) of choice. Batch predictions in our workflow require no interaction from people and the recommendation systems are run automatically. This requires some differences in the tech stack, particularly that we don't use VertexAI when running the airflow instance, but we generate and save the the models the same way.
 
-# 4. Dataset
+- **Python**: The glue that holds everything together, this is the language where we create models, call predictions, generate the tables of batch predictions and prototype. This project is a Python project that uses other components, but first and foremost, this is a Python (and GCP) project.
+
+# Dataset
 
 For the porpuse, the data pulled from **TheCocktailDB** (https://www.thecocktaildb.com/), an open crowd-sourced database of drinks and cocktails from around the world.
 The dataset contains 635 international drinks and cocktails recipes, 488 ingredients, and 635 drink images, one for each cocktail. 
@@ -56,23 +66,21 @@ The way we interact with the database is through API calls. The developers state
 
 To be able to get all the information from the database, we had to get a little creative. We could have looked up each drink bby ID, but this would have been too many get requests for the server and could cause problems. What we decided to do was use the lookup by letter, to return all cocktails that start with a certain letter, and then paste those JSONs together to get the entire database. Only after doing this do we store the data in our cloud storage, and we save a JSON per drink, in a folder with its ID as the name. That is the initial data transform to load the information, but afterwords, we clean the data in SQL and only keep the ingredients for each cocktail, which is what we use to generate the models. 
 
-# 5. Modeling
+# Modeling
 
-1. **What types of models/architectures will you be using for this application? Which ones would you start with?**
-   
-   Because the model we want to build is a hybrid model, there are various parts or components that we would like to leverage to be able to get recommendations. Something important to note is that each one of these components is in itself a recommendation system, but by making a selection or intersection of different systems, we believe we can get more varied and better results. We are starting with somethig that is not a ML model at all, [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). This is in our opinion the easiest to implement, and can give us a good idea of some basic recommendations. 
-   
-   After that, we want to build a more robust ML system that will be based on clustering. We want to start with [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering), and grow to other clustering algorithms from there. This is where the meat of the machine learning computation will take place. Something interesting to note is that we have discrete classes and k-means clustering works **only on real vectors**, so we have to solve the problem of generating real vectors from a list of categorical variables. This will be done by using [principal component analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis) as an in-between step from having the raw ingredients to generating an n-dimensional aproximation to a point from that list. 
-   
-   The last cog in the machine learning puzzle is [market basket analysis](https://www.analyticsvidhya.com/blog/2021/10/a-comprehensive-guide-on-market-basket-analysis/). We want to leverage the predictive power that comes from this sort of algorithm to also make recommendations. We will try to implement this idea from [Mikael Davidsson](https://towardsdatascience.com/using-machine-learning-to-generate-recipes-that-actually-works-b2331c85ab72#d595) who tried to use machine learning to generate recipes that actually work, but we will apply it to cocktails. 
-   
-   Both of the ML solutions that we use to build our model are unsupervised, and as such, metrics are a little more complicated than simply evaluating mean squared error, but that discussion is saved for the next section. What we decided to do is select some recommendations from the output of each of these sub-models, and return a final drink list based on the outputs of the three components. 
+**Models and architectures we use, and the ones we started with.**
 
-# 6. Evaluation
+Because the model we want to build is a hybrid model, there are various parts or components that we would like to leverage to be able to get recommendations. Something important to note is that each one of these components is in itself a recommendation system, but by making a selection or intersection of different systems, we believe we can get more varied and better results. We are starting with somethig that is not a ML model at all, [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). This is in our opinion the easiest to implement, and can give us a good idea of some basic recommendations. 
+
+After that, we want to build a more robust ML system that will be based on clustering. We want to start with [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering), and grow to other clustering algorithms from there. This is where the meat of the machine learning computation will take place. Something interesting to note is that we have discrete classes and k-means clustering works **only on real vectors**, so we have to solve the problem of generating real vectors from a list of categorical variables. This will be done by using [principal component analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis) as an in-between step from having the raw ingredients to generating an n-dimensional aproximation to a point from that list. Our other model that we designed was a Mean Shift clustering algorithm, baed on the same process as the K-Means one. 
+
+Both of the ML solutions that we use to build our model are unsupervised, and as such, metrics are a little more complicated than simply evaluating mean squared error, but that discussion is saved for the next section. What we decided to do is select some recommendations from the output of each of these sub-models, and return a final drink list based on the outputs of the three components. 
+
+# Evaluation
 
 One of the goals will be to generate high [Serendipity](https://eugeneyan.com/writing/serendipity-and-accuracy-in-recommender-systems/). Serendipity is a metric that is commonly used in recommender systems, where a high score means that the user was pleasantly surprised. 
 
-1. **How would you evaluate your model performance, both during training and inference?**
+1. **Evaluating model preformance, during and after training.**
    
    We have decided that we are doing model evaluation for each of our two ML models, and then after combining these with the cosine distance and generating our final meta-model, we are also doing some more subjective evaluation based not on metrics but on human input. 
    
@@ -82,55 +90,51 @@ One of the goals will be to generate high [Serendipity](https://eugeneyan.com/wr
    
    The problem that we have is that the final model is a combination of models, and as such, there are not any pre-defined metrics that we know and are comftrable working with to understand the goodness of fit. As such, we want to rely on asking people's opinion on the matter, as at the end of the day, people are the final node of this data product, and their opinion on if them model is good or bad is the real test to see if it's working. 
 
-
-
-
-2. **How would you evaluate whether your application satisfies its objectives?**
+2. **Evaluation of objectives.**
    
    The best way we can is to ask people to try cocktails recommended based on drinks they like, or simply ask if the recommendation makes sense. While this is as heuristic as metrics get, we hope that it at least gives us viable results. We also can know if the model is performing well based on the metrics and evaluation scores of the underlying smaller models that make up the final one. 
 
 ![drink1](./image/fundrink1.png) ![drink2](./image/fundrink2.png) 
 
-# 7. Inference
+# Inference
 
-1. **Will you be doing online prediction or batch prediction or a combination of both?**
+1. **Predictions** 
    
-    Our solution will be to make online prediction, the user will provide some ingredients and the system will make a new cocktail.
+   We make both online and batch predictions, the batch predictions are for cocktails that already exist, and the online predictions are for lists of ingredientsn ot in the database originally. 
 
-2. **Will the inference be run on the device or through a server?**
+2. **Where we run inference.**
    
     The inference will run through a server hosted on Google Cloud.
 
-3. **Can you run inference on CPU or edge device or do you need GPU?**
+3. **Type of compute used for our inferences.**
    
     We assume that the model that we are going to develop to make the inference will not require a high level of processing, so it will be executed on  CPU.
 
-# 8. Compute
+# Compute
 
-1. **How much compute do you need to develop this application as a market-ready
-   product?**
+1. **Type of compute that we needed and used to develop the project.**
    
    Considering the size and scope of the data that we are working with and the fact that is is a relatively small dataset, we should be fine with working on CPU without needing to leverage more powerful compute resources. We will probably have two machines, one for storing the data and managing it in some SQL instance that could act as our [data warehouse](https://www.oracle.com/database/what-is-a-data-warehouse/#:~:text=A%20data%20warehouse%20is%20a,large%20amounts%20of%20historical%20data.), and another where we run the ML solutions that build our model, probably as an instance of [Vertex AI Workbench](https://cloud.google.com/vertex-ai/docs/workbench). 
    
    Our models will also be able to make predictions on CPU, which is important considering one of the final objectives that we wish to accomplish is being able to generate new drinks or recommendations of drinks based on certain ingredients, which requires being able to predict or extract new observations from our model. 
 
-2. **How much compute do you need to develop this application for this project?**
+2. **How much compute we used.**
    
    We do not expect too much compute to be needed to be able to generate a viable data product given the decisions we have made in terms of the models chosen and the database that we are working with. Something very important to consider though is that if this data product were at a larger scale, the clustering algorithms and recommendation system would have complex hyperparameters, and tuning these might require a much more intensive approach with heavier compute resources. For now though, we are sticking to relatively small machines. 
 
-3. **Compute costs**
+3. **Compute costs.**
    
    Looking over [Vertex AI Pricing](https://cloud.google.com/vertex-ai/pricing#tabular-data) which we would use for model training and deployment and general [Compute Engine: Virtual Machines (VMs) Pricing](https://cloud.google.com/compute/all-pricing) on Google Cloud Platform, we note that even if we were using general purpose machines, such as the `e2-standard` family of VMs, we still would have ample resources for the tasks we need to perform. The smallest option, an `e2-highcpu-2`, has more than enough resources to perform good compute considering size of the database we have chosen. Price per hour is \$0.098 dollars per hour, which should not be a problem at all if we only turn it on at certain times when we are actively training the model. 
 
-# 9. Minimum Viable Product (MVP)
+# Minimum Viable Product (MVP)
 
-1. **What would the MVP be?**
+1. **Our Minimum Viable Product**
    
    Our minimum viable product consists of two different types of ML models coming together to make a new cocktail, which consists of generating a prediction of our integrated model. The ML models that we will be using to classify this data are both unsupervised models, namely clustering and market basket analysis. We hope that combining these two models will be able to generate interesting and complex preditions.
    
    At the end of the day though, what we want is a simple product: A user chooses from a list of ingredients a combination of them that they like, and based off of that list of ingredients, a cocktail in the databbase that matches them exactly is pulled, or, if that combination does not exist in the database, we use the information gathered by our models to create a brand new cocktail that matches those specifications exactly, and return cocktails in the database that are similar in ingredients but not exactly the same ones.
 
-2. **How difficult is it to get there?**
+2. **Difficulties in getting there.**
    
    We expect to find difficulty in the recommendation system more than any other part of the data product. The generation of new observations based on unsupervised learning is a particularly finnicky task, especially considering that we do not have direct numeric metrics with which we can evaluate model performance. 
    
@@ -138,7 +142,7 @@ One of the goals will be to generate high [Serendipity](https://eugeneyan.com/wr
 
 # 10. Pre-mortems
 
-1. **What are the risky aspects of the project?**
+1. **Risky aspects of the project.**
    
    One of the riskiest parts of this project is that we simply have very little data. That initially seemed like a blessing, considering that our model training would be esay and that we don't expect much difficulty in terms of setting up GPUs for more dedicated compute, but it could also be a curse. A problem we could face is that no matter how hard we try to generate new cocktails, some of them simply don't make sense because we don;t have varied enough observations and data to be able to properly predict new cocktails. This is worrying, but hopefully it won't become a problem in the future. [There are some very weird cocktails out there after all](https://www.forbes.com/sites/karlaalindahao/2020/11/12/16-unusual-cocktail-recipes-for-adventurous-drinkers/?sh=54c1ae0342b8), so maybe even if our predictions are strange, we can generate some interesting ones sometimes. 
    
@@ -150,12 +154,12 @@ One of the goals will be to generate high [Serendipity](https://eugeneyan.com/wr
    
    We also might fil to build the particular prediction model if we deem the results that are returned to not be good enough, and we would have to leverage our models to be able to do something else with them in that case. 
 
-3. **What are the limitations of your application?**
+3. **Limitations of our application.**
    
    The amount of data is a strong limitation and our knowledge of the platforms involved is also a relatively big limitation. We might be in a point where we want to expand or implement a core feature but are unable to do so because of our inexperience when it comes to cloud computing in general. 
    
    As for the product itself, one of the most important aspects of cocktail creation is preparation. As an example, a shaken martini is considered by some to have a different flavour profile than a mixed one because of the water content difference. This is not something we incorporate into our model at all, and that would be important in a real recipe. 
 
-4. **What are the potential biases of your application?**
+4. **Potential biases of our application.**
    
    The database is hoasted in the US and the entries are in english, which makes this us think that there is a particularly strong bias in the database for western cocktails or ones that are popular in the US. I very much doubt that the database has things such as a Michelada in them which are more regional drinks, let alone drinks that are primarily had in places where there is little contact with english in general. As such, the ingredients that we have and the final recommendations we make could be lacking because of a very particular geographical and lexical barrier in the database. 
