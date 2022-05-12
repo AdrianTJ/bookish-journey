@@ -200,7 +200,7 @@ For the ML model evaluation, we really have two different models. For clustering
 
 The Elbow method helps to select the optimal number of clusters by fitting the model with a range of values for  𝐾. If the line chart resembles an arm, then the elbow (the point of inflection on the curve) is a good indication that the underlying model fits best at that point.
 
-In the visualizer elbow is annotated with a dashed line, according to this method the best number of clusters is 5.
+In the visualizer elbow is annotated with a dashed line, according to this method the best number of clusters is 6.
 
 <img src="../image/Elbow.png">
 
