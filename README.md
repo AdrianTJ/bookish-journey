@@ -15,7 +15,7 @@ A little bit about each of us:
 
 * Juan Carlos: I am a runner and I’m new doing data science. I work in the CDMX, with the transit police database, I’m a R lover, but I´m trying to learn python. I love this team! They have taught me so much.
 
-* I’m a mathematician and I'm training in data science. I have worked in data analysis but now I want to enter the world of data engineering and this team has helped me make the transition more friendly.  I like to learn from experts and also share the knowledge I have gained.
+* Monica: I’m a mathematician and I'm training in data science. I have worked in data analysis but now I want to enter the world of data engineering and this team has helped me make the transition more friendly.  I like to learn from experts and also share the knowledge I have gained.
 
 * Adrian: I am a mathematician turned data scientist, and my intererests lie in model optimization and natural language processing. I enjoy coffee, brewing beer, and anything made by David Lynch. I also particularly enjoy reading about ML and its applications to art and design.  
 
